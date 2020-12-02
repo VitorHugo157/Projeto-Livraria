@@ -1,7 +1,7 @@
 # Projeto-Livraria
 Projeto desenvolvido para as disciplinas de Programação Orientada a Objetos e Banco de Dados
 
-INTEGRANTES DO GRUPO
+<strong>INTEGRANTES DO GRUPO</strong>
 
 Ricardo Ferreira Martins
 
