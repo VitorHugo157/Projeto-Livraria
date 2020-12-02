@@ -80,13 +80,14 @@ public class AutorBoundary implements EventHandler<ActionEvent>,
 		verifyUser(typeUser);
 		generateTable();
 		
-		paneBotoes.getChildren().addAll(btnAdicionar, btnPesquisar, btnAtualizar, btnExcluir);
+		paneBotoes.getChildren().addAll(btnAdicionar, btnAtualizar, btnExcluir);
 		
 		paneTxt.add(lblCodigoAutor, 0, 5);
 		paneTxt.add(txtCodigoAutor, 1, 5);
 		
 		paneTxt.add(lblNomeAutor, 0, 6);
 		paneTxt.add(txtNomeAutor, 1, 6);
+		paneTxt.add(btnPesquisar, 2, 6);
 		
 		paneTxt.add(lblNascimentoAutor, 0, 7);
 		paneTxt.add(txtNascimentoAutor, 1, 7);

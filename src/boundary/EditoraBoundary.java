@@ -83,13 +83,14 @@ public class EditoraBoundary implements EventHandler<ActionEvent>,
 		verifyUser(typeUser);
 		generateTable();
 		
-		paneBotoes.getChildren().addAll(btnAdicionar, btnPesquisar, btnAtualizar, btnExcluir);
+		paneBotoes.getChildren().addAll(btnAdicionar, btnAtualizar, btnExcluir);
 		
 		paneTxt.add(lblCodigoEditora, 0, 5);
 		paneTxt.add(tfCodigoEditora, 1, 5);
 		
 		paneTxt.add(lblNomeEditora, 0, 6);
 		paneTxt.add(tfNomeEditora, 1, 6);
+		paneTxt.add(btnPesquisar, 2, 6);
 		
 		paneTxt.add(lblLogradouroEditora, 0, 7);
 		paneTxt.add(tfLogradouroEditora, 1, 7);

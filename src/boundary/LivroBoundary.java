@@ -77,11 +77,12 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 		vincularCampos();
 		verifyUser(typeUser);
 		generateTable();
-		
-		paneBotoes.getChildren().addAll(btnAdicionar, btnPesquisar, btnAtualizar, btnExcluir);
+
+		paneBotoes.getChildren().addAll(btnAdicionar, btnAtualizar, btnExcluir);
 			
 		paneTxt.add(lblCodigoLivro, 0, 5);
 		paneTxt.add(tfCodigoLivro, 1, 5);
+		paneTxt.add(btnPesquisar, 2, 5);
 		
 		paneTxt.add(lblNomeLivro, 0, 6);
 		paneTxt.add(tfNomeLivro, 1, 6);

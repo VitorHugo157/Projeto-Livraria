@@ -82,10 +82,11 @@ public class EdicaoBoundary implements EventHandler<ActionEvent>,
 		verifyUser(typeUser);
 		generateTable();
 		
-		paneBotoes.getChildren().addAll(btnAdicionar, btnPesquisar, btnAtualizar, btnExcluir);
+		paneBotoes.getChildren().addAll(btnAdicionar, btnAtualizar, btnExcluir);
 		
 		paneTxt.add(lblIsbn, 0, 5);
 		paneTxt.add(tfIsbn, 1, 5);
+		paneTxt.add(btnPesquisar, 3, 5);
 		
 		paneTxt.add(lblPrecoEdicao, 0, 6);
 		paneTxt.add(tfPrecoEdicao, 1, 6);
