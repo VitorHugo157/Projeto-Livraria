@@ -45,7 +45,7 @@ public class LivrariaLogin extends Application implements EventHandler<ActionEve
 		
 		bp.setCenter(gp);
 		
-		gp.add(new Label("Login"), 26, 18);
+//		gp.add(new Label("Login"), 26, 18);
 		gp.add(lblLogin, 25, 20);
 		gp.add(tfLogin, 26, 20);
 		gp.add(lblSenha, 25, 22);

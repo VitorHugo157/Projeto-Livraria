@@ -11,17 +11,17 @@ Requisitos Funcionais
 *RF010 - Mostrar os dados correspondentes de cada classe nas suas respectivas tabelas
 
 Requisitos Não Funcionais
-*RNF001 Tempo de resposta de todos os recursos do sistema deve ser de no máximo 500 milissegundos
-*RNF002 O programa deve ter recursos para funcionar em modo off-line, pois necessita de conectividade somente com um banco de dados local
-*RNF003 O produto será desenvolvido para ambientes Windows e necessita de pelo menos 1GB de memória para funcionar corretamente
-*RNF004 Todas informações do software são salvas e obtidas através do banco de dados local
+*RNF001 - Tempo de resposta de todos os recursos do sistema deve ser de no máximo 500 milissegundos
+*RNF002 - O programa deve ter recursos para funcionar em modo off-line, pois necessita de conectividade somente com um banco de dados local
+*RNF003 - O produto será desenvolvido para ambientes Windows e necessita de pelo menos 1GB de memória para funcionar corretamente
+*RNF004 - Todas informações do software são salvas e obtidas através do banco de dados local
 
 Requisitos de Negócio
-*RNG001 Preço da edição do livro não pode ser < 0
-*RNG002 Um cliente pode comprar muitos livros
-*RNG003 Uma edição de livro pode ser comprada por muitos clientes, desde que haja estoque
-*RNG004 Um livro pode ter muitos autores
-*RNG005 Um autor pode possuir muitos livros
-*RNG006 Uma editora pode publicar muitas edições de livros
-*RNG007 Uma edição pode ser publicada por muitas editoras
-*RNG008 Um livro pode conter muitas edições de muitas editoras
+*RNG001 - Preço da edição do livro não pode ser < 0
+*RNG002 - Um cliente pode comprar muitos livros
+*RNG003 - Uma edição de livro pode ser comprada por muitos clientes, desde que haja estoque
+*RNG004 - Um livro pode ter muitos autores
+*RNG005 - Um autor pode possuir muitos livros
+*RNG006 - Uma editora pode publicar muitas edições de livros
+*RNG007 - Uma edição pode ser publicada por muitas editoras
+*RNG008 - Um livro pode conter muitas edições de muitas editoras
