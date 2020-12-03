@@ -39,7 +39,7 @@ public class ClienteLivroBoundary implements EventHandler<ActionEvent>,
 	private Button btnPesquisar = new Button("Pesquisar");
 	
 	private Label lblCpf = new Label("CPF: ");
-	private Label lblLivro = new Label("Codigo Livro: ");
+	private Label lblLivro = new Label("Código Livro: ");
 	
 	private TableView<ClienteLivro> table = new TableView<>();
 	private ClienteLivroControl control = new ClienteLivroControl();
@@ -86,6 +86,11 @@ public class ClienteLivroBoundary implements EventHandler<ActionEvent>,
 		btnAtualizar.setOnAction(this);
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
+		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(cl, oldValue, newValue) -> { 
+					control.setClienteLivro(newValue);
+				});
 		
 		return panePrincipal;
 	}
@@ -184,7 +189,7 @@ public class ClienteLivroBoundary implements EventHandler<ActionEvent>,
 		TableColumn<ClienteLivro, String> cpfColumn = new TableColumn<>("CPF");
 		cpfColumn.setMinWidth(125);
 		
-		TableColumn<ClienteLivro, Integer> livroColumn = new TableColumn<>("Codigo Livro");
+		TableColumn<ClienteLivro, Integer> livroColumn = new TableColumn<>("Código Livro");
 		livroColumn.setMinWidth(125);
 		
 		TableColumn<ClienteLivro, String> nomeClienteColumn = new TableColumn<>("Nome Cliente");
@@ -196,7 +201,7 @@ public class ClienteLivroBoundary implements EventHandler<ActionEvent>,
 		TableColumn<ClienteLivro, String> idiomaLivroColumn = new TableColumn<>("Idioma Livro");
 		idiomaLivroColumn.setMinWidth(125);
 		
-		TableColumn<ClienteLivro, String> anoLivroColumn = new TableColumn<>("Ano Lancamento");
+		TableColumn<ClienteLivro, String> anoLivroColumn = new TableColumn<>("Ano Lançamento");
 		anoLivroColumn.setMinWidth(150);
 		
 		cpfColumn.setCellValueFactory( new PropertyValueFactory<ClienteLivro, String>("cpfCliente"));

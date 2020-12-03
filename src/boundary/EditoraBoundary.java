@@ -44,10 +44,10 @@ public class EditoraBoundary implements EventHandler<ActionEvent>,
 	private Button btnExcluir = new Button("Excluir");
 	private Button btnPesquisar = new Button("Pesquisar");
 	
-	private Label lblCodigoEditora = new Label("Codigo: ");
+	private Label lblCodigoEditora = new Label("Código: ");
 	private Label lblNomeEditora = new Label("Nome: ");
 	private Label lblLogradouroEditora = new Label("Logradouro: ");
-	private Label lblNumLograEditora = new Label("Numero: ");
+	private Label lblNumLograEditora = new Label("Número: ");
 	private Label lblCepEditora = new Label("CEP: ");
 	private Label lblTelefoneEditora = new Label("Telefone: ");
 	
@@ -112,6 +112,11 @@ public class EditoraBoundary implements EventHandler<ActionEvent>,
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
 		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(e, oldValue, newValue) -> { 
+					control.setEditora(newValue);
+				});
+		
 		return panePrincipal;
 	}
 
@@ -175,7 +180,7 @@ public class EditoraBoundary implements EventHandler<ActionEvent>,
 	
 	@Override
 	public void generateTable() {
-		TableColumn<Editora, Integer> codigoColumn = new TableColumn<>("Codigo Livro");
+		TableColumn<Editora, Integer> codigoColumn = new TableColumn<>("Código Editora");
 		codigoColumn.setMinWidth(200);
 		
 		TableColumn<Editora, String> nomeEditoraColumn = new TableColumn<>("Nome Editora");
@@ -184,7 +189,7 @@ public class EditoraBoundary implements EventHandler<ActionEvent>,
 		TableColumn<Editora, String> logradouroColumn = new TableColumn<>("Logradouro");
 		logradouroColumn.setMinWidth(200);
 		
-		TableColumn<Editora, Integer> numLograColumn = new TableColumn<>("Numero");
+		TableColumn<Editora, Integer> numLograColumn = new TableColumn<>("Número");
 		numLograColumn.setMinWidth(200);
 		
 		TableColumn<Editora, String> cepEditoraColumn = new TableColumn<>("CEP");

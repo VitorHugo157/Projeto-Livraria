@@ -127,17 +127,13 @@ public class ClienteBoundary implements EventHandler<ActionEvent>,
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
 		
-//		tfCpf.textProperty().addListener(observable -> verificaCpf());
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(c, oldValue, newValue) -> { 
+					control.setCliente(newValue);
+				});
 		
 		return panePrincipal;
 	}
-
-//	private void verificaCpf() {
-//		
-//		if ( (tfCpf.getText().length() == 3) && !(".".equals(String.valueOf(tfCpf.getText().charAt(2))))) {
-//			tfCpf.setText(tfCpf.getText() + ".");
-//		}
-//	}
 
 	@Override
 	public void handle(ActionEvent e) {

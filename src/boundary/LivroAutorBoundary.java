@@ -38,8 +38,8 @@ public class LivroAutorBoundary implements EventHandler<ActionEvent>,
 	private Button btnExcluir = new Button("Excluir");
 	private Button btnPesquisar = new Button("Pesquisar");
 	
-	private Label lblCodigoLivro = new Label("Codigo Livro: ");
-	private Label lblCodigoAutor = new Label("Codigo Autor: ");
+	private Label lblCodigoLivro = new Label("Código Livro: ");
+	private Label lblCodigoAutor = new Label("Código Autor: ");
 	
 	private TableView<LivroAutor> table = new TableView<>();
 	private LivroAutorControl control = new LivroAutorControl();
@@ -86,6 +86,11 @@ public class LivroAutorBoundary implements EventHandler<ActionEvent>,
 		btnAtualizar.setOnAction(this);
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
+		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(la, oldValue, newValue) -> { 
+					control.setLivroAutor(newValue);
+				});
 		
 		return panePrincipal;
 	}
@@ -146,10 +151,10 @@ public class LivroAutorBoundary implements EventHandler<ActionEvent>,
 	@Override
 	public void generateTable() {
 		
-		TableColumn<LivroAutor, Integer> livroColumn = new TableColumn<>("Codigo Livro");
+		TableColumn<LivroAutor, Integer> livroColumn = new TableColumn<>("Código Livro");
 		livroColumn.setMinWidth(125);
 		
-		TableColumn<LivroAutor, Integer> autorColumn = new TableColumn<>("Codigo Autor");
+		TableColumn<LivroAutor, Integer> autorColumn = new TableColumn<>("Código Autor");
 		autorColumn.setMinWidth(125);
 		
 		TableColumn<LivroAutor, String> nomeLivroColumn = new TableColumn<>("Nome Livro");
@@ -158,7 +163,7 @@ public class LivroAutorBoundary implements EventHandler<ActionEvent>,
 		TableColumn<LivroAutor, String> idiomaLivroColumn = new TableColumn<>("Idioma Livro");
 		idiomaLivroColumn.setMinWidth(125);
 		
-		TableColumn<LivroAutor, String> anoLivroColumn = new TableColumn<>("Ano Lancamento");
+		TableColumn<LivroAutor, String> anoLivroColumn = new TableColumn<>("Ano Lançamento");
 		anoLivroColumn.setMinWidth(150);
 		
 		TableColumn<LivroAutor, String> nomeAutorColumn = new TableColumn<>("Nome Autor");

@@ -94,6 +94,11 @@ public class EdicaoEditoraLivroBoundary implements EventHandler<ActionEvent>,
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
 		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(eel, oldValue, newValue) -> { 
+					control.setEdicaoEditoraLivro(newValue);
+				});
+		
 		return panePrincipal;
 	}
 	
@@ -196,10 +201,10 @@ public class EdicaoEditoraLivroBoundary implements EventHandler<ActionEvent>,
 		isbnColumn.setMinWidth(125);
 		
 		TableColumn<EdicaoEditoraLivro, Integer> editoraColumn = new TableColumn<>("Codigo Editora");
-		editoraColumn.setMinWidth(125);
+		editoraColumn.setMinWidth(150);
 		
 		TableColumn<EdicaoEditoraLivro, Integer> livroColumn = new TableColumn<>("Codigo Livro");
-		livroColumn.setMinWidth(125);
+		livroColumn.setMinWidth(150);
 		
 		TableColumn<EdicaoEditoraLivro, Double> precoColumn = new TableColumn<>("Preço Edição");
 		precoColumn.setMinWidth(125);

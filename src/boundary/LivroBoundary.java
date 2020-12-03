@@ -42,10 +42,10 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 	private Button btnExcluir = new Button("Excluir");
 	private Button btnPesquisar = new Button("Pesquisar");
 	
-	private Label lblCodigoLivro = new Label("Codigo: ");
+	private Label lblCodigoLivro = new Label("Código: ");
 	private Label lblNomeLivro = new Label("Nome: ");
 	private Label lblIdiomaLivro = new Label("Idioma: ");
-	private Label lblAnoLancamento = new Label("Ano de Lancamento: ");
+	private Label lblAnoLancamento = new Label("Ano de Lançamento: ");
 	
 	TableView<Livro> table = new TableView<>();
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -100,6 +100,11 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 		btnAtualizar.setOnAction(this);
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
+		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(l, oldValue, newValue) -> { 
+					control.setLivro(newValue);
+				});
 		
 		return panePrincipal;
 	}
@@ -159,7 +164,7 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 	@Override
 	public void generateTable() {
 		
-		TableColumn<Livro, Integer> codigoColumn = new TableColumn<>("Codigo Livro");
+		TableColumn<Livro, Integer> codigoColumn = new TableColumn<>("Código Livro");
 		codigoColumn.setMinWidth(200);
 		
 		TableColumn<Livro, String> nomeLivroColumn = new TableColumn<>("Nome Livro");

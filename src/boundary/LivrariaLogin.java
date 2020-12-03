@@ -1,33 +1,40 @@
 package boundary;
 
+import java.io.InputStream;
+
 import javax.swing.JOptionPane;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LivrariaLogin extends Application implements EventHandler<ActionEvent> {
-
+	
 	private BorderPane bp = new BorderPane();
 	private GridPane gp = new GridPane();
 	
 	private Button btnLogar = new Button("Acessar");
 	
-	private TextField tfLogin = new TextField();
-	private PasswordField pfSenha = new PasswordField();
+	private TextField tfUser = new TextField();
+	private PasswordField pfPass = new PasswordField();
 	
-	private Label lblLogin = new Label("Usuário:");
-	private Label lblSenha = new Label("Senha: ");
+	private Label lblUser = new Label("Username");
+	private Label lblPass = new Label("Password");
+	private Label lblWelcome = new Label("Sistema de Gerenciamento de Dados da LibMaster");
 	
 	private String typeUser = "";
 	
@@ -38,24 +45,46 @@ public class LivrariaLogin extends Application implements EventHandler<ActionEve
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		scn = new Scene(bp, 1600, 850);
+		FlowPane fpUser = new FlowPane();
+		FlowPane fpPass = new FlowPane();
+		FlowPane fpLogin = new FlowPane();
+		fpLogin.setHgap(5);
+		fpUser.setHgap(5);
+		fpPass.setHgap(5);
+		fpLogin.getChildren().addAll(new Label("                    "), btnLogar);
+		fpUser.getChildren().addAll(new Label("     "), lblUser, tfUser);
+		fpPass.getChildren().addAll(new Label("     "), lblPass, pfPass);
 		
-		gp.setHgap(20);
-		gp.setVgap(20);
+		Group grp = new Group();
+		InputStream is = getClass().getResourceAsStream("/boundary/images/login.jpg");
+		Image img = new Image(is);
+		Image img2 = new Image(getClass().getResourceAsStream("/boundary/images/login2.png"));
+		Canvas canvas = new Canvas(1650, 850);
+		GraphicsContext ctx = canvas.getGraphicsContext2D();
+		ctx.drawImage(img, -50, 0);
+		ctx.drawImage(img2, 1150, 150);
+		grp.getChildren().addAll(canvas, gp);
+				
+		scn = new Scene(bp, 1650, 850);
 		
-		bp.setCenter(gp);
 		
-//		gp.add(new Label("Login"), 26, 18);
-		gp.add(lblLogin, 25, 20);
-		gp.add(tfLogin, 26, 20);
-		gp.add(lblSenha, 25, 22);
-		gp.add(pfSenha, 26, 22);
-		gp.add(btnLogar, 26, 25);
+		gp.setHgap(5);
+		gp.setVgap(15);
+		bp.setCenter(grp);
+		gp.add(lblWelcome, 40, 15);
+		gp.add(fpUser, 62, 17);
+		gp.add(fpPass, 62, 19);
+		gp.add(fpLogin, 62, 23);
 		
 		btnLogar.setOnAction(this);
+		tfUser.setOnAction(this);
+		pfPass.setOnAction(this);
+		tfUser.setId("tfUser");
+		pfPass.setId("pfPass");
 		
-		bp.getStyleClass().add("border-pane");
 		btnLogar.setMinWidth(250.0);
+		bp.getStyleClass().add("border-pane");
+		lblWelcome.getStyleClass().add("label-welcome");
 		scn.getStylesheets().add("/boundary/css/DarkTheme.css");
 		
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("/boundary/images/icon.png")));
@@ -66,7 +95,9 @@ public class LivrariaLogin extends Application implements EventHandler<ActionEve
 	
 	@Override
 	public void handle(ActionEvent e) {
-		if (e.getTarget() == btnLogar) {
+		String cmd = e.getSource().toString();
+//		System.out.println(cmd);
+		if (e.getTarget() == btnLogar || cmd.contains("pfPass") || cmd.contains("tfUser")) {
 			executarComando("logar");
 		}
 	}
@@ -87,19 +118,19 @@ public class LivrariaLogin extends Application implements EventHandler<ActionEve
 
 	private String verificarLogin() {
 		
-		if (("".equals(tfLogin.getText()) || ("".equals(pfSenha.getText())))) {
+		if (("".equals(tfUser.getText()) || ("".equals(pfPass.getText())))) {
 			JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos", "ERRO", JOptionPane.WARNING_MESSAGE);
 		
 		
-		} else if ("user".equals(tfLogin.getText()) && !("user@123".equals(pfSenha.getText()))) {
+		} else if ("user".equals(tfUser.getText()) && !("user@123".equals(pfPass.getText()))) {
 			JOptionPane.showMessageDialog(null, "Senha incorreta", "ERRO", JOptionPane.ERROR_MESSAGE);
-		} else if ("user".equals(tfLogin.getText()) && "user@123".equals(pfSenha.getText())) {
+		} else if ("user".equals(tfUser.getText()) && "user@123".equals(pfPass.getText())) {
 			typeUser = "user";
 		
 		
-		} else if ("admin".equals(tfLogin.getText()) && !("admin@123".equals(pfSenha.getText()))) {
+		} else if ("admin".equals(tfUser.getText()) && !("admin@123".equals(pfPass.getText()))) {
 			JOptionPane.showMessageDialog(null, "Senha incorreta", "ERRO", JOptionPane.ERROR_MESSAGE);
-		} else if ("admin".equals(tfLogin.getText()) && "admin@123".equals(pfSenha.getText())) {
+		} else if ("admin".equals(tfUser.getText()) && "admin@123".equals(pfPass.getText())) {
 			typeUser = "admin";
 		
 		

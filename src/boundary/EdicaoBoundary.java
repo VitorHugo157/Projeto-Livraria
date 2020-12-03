@@ -108,6 +108,11 @@ public class EdicaoBoundary implements EventHandler<ActionEvent>,
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
 		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(c, oldValue, newValue) -> { 
+					control.setEdicao(newValue);
+				});
+		
 		return panePrincipal;
 	}
 	

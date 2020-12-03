@@ -86,7 +86,14 @@ public class EditoraDAOImpl implements IEditoraDAO {
 		try {
 			
 			Connection con = ConnectionSingleton.getInstance().getConnection();
-			String sql = "SELECT * FROM [Editora] WHERE nome_editora LIKE ?";
+			String sql = "SELECT codigo_editora, nome_editora, logradouro_editora, num_logradouro_editora, "
+					+ "SUBSTRING(cep_editora, 1, 5) + '-' + SUBSTRING(cep_editora, 6, 3) AS cep, "
+					+ "CASE WHEN (LEN(telefone_editora) = 11) THEN '(' + SUBSTRING(telefone_editora, 1, 2) + ')' + "
+					+ "SUBSTRING(telefone_editora, 3, 5) + '-' + SUBSTRING(telefone_editora, 8, 4) ELSE "
+					+ "'(' + SUBSTRING(telefone_editora, 1, 2) + ')' + SUBSTRING(telefone_editora, 3, 4) + '-' + SUBSTRING(telefone_editora, 7, 4) "
+					+ "END AS tel_editora "
+					+ "FROM [Editora] "
+					+ "WHERE nome_editora LIKE ?";
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, "%" + nome + "%");
 			ResultSet rs = st.executeQuery();
@@ -96,8 +103,8 @@ public class EditoraDAOImpl implements IEditoraDAO {
 				e.setNomeEditora(rs.getString("nome_editora"));
 				e.setLogradouroEditora(rs.getString("logradouro_editora"));
 				e.setNumLograEditora(rs.getInt("num_logradouro_editora"));
-				e.setCepEditora(rs.getString("cep_editora"));
-				e.setTelefoneEditora(rs.getString("telefone_editora"));
+				e.setCepEditora(rs.getString("cep"));
+				e.setTelefoneEditora(rs.getString("tel_editora"));
 				lista.add(e);
 			}
 			con.close();

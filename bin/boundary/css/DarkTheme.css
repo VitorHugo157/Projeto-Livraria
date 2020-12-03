@@ -1,5 +1,5 @@
 .border-pane {
-	-fx-background-color: #1d1d1d;
+	-fx-background-color: black;
 }
 
 .background {
@@ -10,6 +10,18 @@
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
+}
+
+.label-welcome {
+	-fx-font-size: 29pt;
+	-fx-font-family: "Tahoma";
+	-fx-text-fill: #363636;
+}
+
+.label-main-screen {
+	-fx-font-size: 19pt;
+	-fx-font-family: Calibri;
+	-fx-text-fill: #DAA520;
 }
 
 .float-label {
@@ -34,11 +46,13 @@
 
 .table-view {
     -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-control-inner-background: black;
+    -fx-background-color: black;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
+    -fx-font-size: 10pt;
+    
 }
 
 .table-view .column-header-background {
@@ -66,7 +80,10 @@
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
+    -fx-background-color: #363636;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    
 }
 
 .split-pane:horizontal > .split-pane-divider {
@@ -138,7 +155,7 @@
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
-    -fx-border-radius: 15, 5;
+    -fx-border-radius: 10, 5;
 }
 
 .button:hover {

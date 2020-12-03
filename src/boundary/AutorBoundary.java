@@ -42,7 +42,7 @@ public class AutorBoundary implements EventHandler<ActionEvent>,
 	private Button btnExcluir = new Button("Excluir");
 	private Button btnPesquisar = new Button("Pesquisar");
 	
-	private Label lblCodigoAutor = new Label("Codigo: ");
+	private Label lblCodigoAutor = new Label("Código: ");
 	private Label lblNomeAutor = new Label("Nome: ");
 	private Label lblNascimentoAutor = new Label("Nascimento: ");
 	private Label lblNacionalidadeAutor = new Label("Nacionalidade: ");
@@ -106,6 +106,11 @@ public class AutorBoundary implements EventHandler<ActionEvent>,
 		btnPesquisar.setOnAction(this);
 		btnExcluir.setOnAction(this);
 		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				(a, oldValue, newValue) -> { 
+					control.setAutor(newValue);
+				});
+		
 		return panePrincipal;
 	}
 
@@ -165,7 +170,7 @@ public class AutorBoundary implements EventHandler<ActionEvent>,
 	@Override
 	public void generateTable() {
 
-		TableColumn<Autor, Integer> codigoColumn = new TableColumn<>("Codigo Autor");
+		TableColumn<Autor, Integer> codigoColumn = new TableColumn<>("Código Autor");
 		codigoColumn.setMinWidth(200);
 
 		TableColumn<Autor, String> nomeAutorColumn = new TableColumn<>("Nome Autor");
