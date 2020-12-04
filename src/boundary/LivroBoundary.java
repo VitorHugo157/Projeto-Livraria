@@ -12,7 +12,6 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -215,7 +214,7 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 			try {
 				control.inserirLivro();
 			} catch (DAOException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 			limparCampos();
 			
@@ -223,21 +222,21 @@ public class LivroBoundary implements EventHandler<ActionEvent>,
 			try {
 				control.atualizarLivro();
 			} catch (DAOException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 			
 		} else if ("pesquisar".equals(cmd)) {
 			try {
 				control.buscarLivro();
 			} catch (DAOException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 			
 		} else if ("excluir".equals(cmd)) {
 			try {
 				control.excluirLivro();
 			} catch (DAOException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

@@ -51,7 +51,7 @@ public class LivroControl {
 	public void inserirLivro() throws DAOException {
 		
 		livroDAO.insertLivro(getLivro());
-		
+		livros.add(getLivro());		
 	}
 	
 	public void atualizarLivro() throws DAOException {

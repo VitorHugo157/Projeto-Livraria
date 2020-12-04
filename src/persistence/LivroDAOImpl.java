@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.Autor;
 import entity.Livro;
 
 public class LivroDAOImpl implements ILivroDAO {

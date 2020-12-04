@@ -31,7 +31,7 @@ public class ConnectionSingleton {
 	
 	public Connection getConnection() { 
 		try {
-			if (con == null || con.isClosed() || !con.isValid(500)) { 
+			if (con == null || con.isClosed()) { 
 				con = DriverManager.getConnection(String.format("jdbc:jtds:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s;", 
 						HOSTNAME, DBNAME, USER, PASS));
 			}
